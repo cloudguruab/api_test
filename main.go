@@ -9,14 +9,11 @@ import (
 func main() {
     r := gin.Default()
 
-  // r.GET("/", func(c *gin.Context) {
-  //   c.JSON(http.StatusOK, gin.H{"data": "hello world"})    
-  // })
-
-    
     models.ConnectDatabase()
 
+    r.POST("/books", controllers.CreateBook)
     r.GET("/books", controllers.FindBooks)
+    r.GET("/books/:id", controllers.FindBook) // left off here fetching rout at /books/1
 
     r.Run()
 }
