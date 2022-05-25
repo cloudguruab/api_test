@@ -1,10 +1,9 @@
 package main
 
 import (
-    "net/http"
-  
     "github.com/cloudguruab/api_test/models"
     "github.com/gin-gonic/gin"
+    "github.com/cloudguruab/api_test/controllers"
 )
 
 func main() {
@@ -16,6 +15,8 @@ func main() {
 
     
     models.ConnectDatabase()
+
+    r.GET("/books", controllers.FindBooks)
 
     r.Run()
 }
